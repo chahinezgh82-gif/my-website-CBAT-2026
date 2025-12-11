@@ -1,0 +1,314 @@
+/* Base */
+:root {
+    --primary-color: #007BFF;
+    --secondary-color: #6c757d;
+    --accent-color: #28a745;
+    --light-bg: #f8f9fa;
+    --dark-text: #343a40;
+    --font-stack: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    --nav-height: 70px;
+}
+
+* { box-sizing: border-box; margin:0; padding:0; }
+
+body { 
+    font-family: var(--font-stack); 
+    line-height:1.6; 
+    color: var(--dark-text); 
+    background:white; 
+    /* 🟢 نعتمد على السلوك الافتراضي لـ body (الترتيب العمودي) 🟢 */
+    display: block; 
+}
+
+.container { 
+    max-width:1200px; 
+    margin:0 auto; 
+    padding:0 20px; 
+    /* 🟢 نعتمد على السلوك الافتراضي لـ container (الترتيب العمودي) 🟢 */
+    display: block; 
+}
+
+.section { padding:80px 0; min-height:50vh; }
+
+.alt-bg { background-color: var(--light-bg); }
+
+.section-title { text-align:center; font-size:2.5em; margin-bottom:50px; color: var(--primary-color); position: relative; padding-bottom:10px; }
+.section-title::after { content:''; position:absolute; bottom:0; left:50%; transform: translateX(-50%); width:60px; height:4px; background-color: var(--accent-color); border-radius:2px; }
+
+/* Navbar */
+/* ⚠️ نستخدم Flexbox هنا فقط لأننا نحتاج الروابط بجانب الشعار ⚠️ */
+#navbar { background:white; box-shadow:0 2px 4px rgba(0,0,0,0.1); position:sticky; top:0; z-index:1000; height:var(--nav-height); display:flex; align-items:center; }
+#navbar .container { display:flex; justify-content:space-between; align-items:center; width:100%; }
+.logo-img { width:50px; height:50px; border-radius:50%; }
+.nav-links { list-style:none; display:flex; gap:30px; }
+.nav-links a { text-decoration:none; color: var(--dark-text); font-weight:500; transition:color 0.3s ease; }
+.nav-links a:hover { color: var(--primary-color); }
+.hamburger { display:none; background:none; border:none; font-size:1.5em; cursor:pointer; color: var(--dark-text); }
+
+
+/* Hero */
+.hero-bg { 
+    /* 🟢 تغيير display:flex إلى block لإزالة الترتيب الأفقي القسري 🟢 */
+    display: block; 
+    align-items:center; 
+    justify-content:center; 
+    text-align:center; 
+    height:90vh; 
+    background:url('https://th.bing.com/th/id/R.e8b13b3e96c1c523cda4d3f828348543?rik=Fe1BTn60pYlWwA&riu=http%3a%2f%2fwww.univ-eltarf.dz%2ffr%2fimages%2funiv%2fucb_tarf_centre2.jpg&ehk=amNgv5ls%2bWaLXPljwOfgkXPvOeTtscybWnLFF1ouFHU%3d&risl=&pid=ImgRaw&r=0') center/cover no-repeat;
+    padding: 0 20px; /* إضافة padding لضمان عدم التصاق المحتوى */
+}
+
+/* 🟢 تم دمج hero-content في hero-bg و hero-text الآن يترتب عمودياً 🟢 */
+.hero-text { 
+    /* 🟢 نضمن أن يأخذ عرضه الكامل (عمودي) 🟢 */
+    display: block;
+    margin: 0 auto;
+    max-width: 800px;
+    color:white; 
+    text-shadow:2px 2px 4px rgba(0,0,0,0.5); 
+    padding-top: 50px; /* إضافة مسافة من الأعلى بعد إزالة Flex */
+}
+
+.hero-text h1 {
+    font-size: 2em; /* تصغير الخط قليلاً للشاشات الأصغر */
+}
+
+.hero-text .date { margin-top:10px; font-size:1.2em; }
+
+.hero-image { 
+    /* 🟢 يتم وضعه تحت hero-text عمودياً 🟢 */
+    display: block;
+    margin: 30px auto; 
+    max-width: 400px; /* تحديد أقصى عرض لصورته */
+    text-align:center; 
+}
+
+.hero-image img { max-width:100%; border-radius:10px; }
+
+
+/* Buttons */
+.btn { padding:12px 30px; border:none; border-radius:5px; font-weight:bold; text-transform:uppercase; cursor:pointer; text-decoration:none; transition:all 0.3s ease; display:inline-block; }
+.cta-btn { background-color:var(--accent-color); color:white; }
+.cta-btn:hover { background-color:#1e7e34; transform:translateY(-2px); }
+.register-btn { background-color: var(--primary-color); color:white; font-size:1.2em; padding:15px 40px; }
+
+
+/* Thèmes */
+/* ⚠️ نستخدم Flexbox هنا لتوزيع المحاور بجانب بعضها، ولكنها تتكسر (flex-wrap: wrap) ⚠️ */
+.themes-wrapper { display:flex; justify-content:center; flex-wrap:wrap; gap:20px; }
+
+.axe { 
+    /* 🟢 نعتمد على Flex هنا للتوسيط داخل الدائرة فقط 🟢 */
+    background:var(--primary-color); 
+    color:white; 
+    padding:20px; 
+    border-radius:50%; 
+    width:80px; 
+    height:80px; 
+    display:flex; 
+    align-items:center; 
+    justify-content:center; 
+    cursor:pointer; 
+    transition:all 0.3s; 
+    text-align:center; 
+    font-weight:bold; 
+}
+
+.axe:hover { transform:scale(1.1); }
+.axe-title { margin-top:20px; text-align:center; font-size:1.3em; color: var(--secondary-color); }
+
+
+/* ------------------------------------- */
+/* 🔵 تنسيق قسم الرؤساء (Présidents) - عمودي 🔵 */
+/* ------------------------------------- */
+
+.presidents-wrapper {
+    /* Nouvelle règle 1: Permet de centrer les éléments inline-block */
+    text-align: center; 
+    /* Nouvelle règle 2: Utiliser la largeur maximale pour contenir les 2 cartes côte à côte */
+    max-width: 1200px; 
+    margin: 0 auto;
+    padding: 0 10px; /* Ajout d'un petit padding pour l'espace */
+}
+
+.president-card {
+   /* Nouvelle règle 3: Rendre l'élément inline pour l'alignement horizontal */
+    display: inline-block; 
+    /* Nouvelle règle 4: Définir la largeur pour qu'il y ait deux cartes par ligne */
+    width: 49%; 
+    vertical-align: top; /* Important pour aligner par le haut */
+    
+    text-align: center;
+    margin: 20px 0.5%; /* Utiliser un petit pourcentage de marge pour l'espace entre les cartes */
+    background: #f8f8f8;
+    padding: 20px;
+    border-radius: 12px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    transition: transform 0.3s ease;
+}
+
+.president-card:hover {
+    transform: translateY(-5px);
+}
+
+.president-card h3 {
+    text-align: center;
+    margin-top: 10px;
+    margin-bottom: 15px;
+    font-size: 1.3em;
+    color: var(--primary-color);
+}
+
+.president-card p {
+    text-align: left; /* محاذاة التفاصيل لليسار داخل البطاقة */
+    margin: 5px 0;
+    font-size: 0.95em;
+}
+/* ------------------------------------- */
+/* 🔵 Ajustement Mobile (Media Queries) 🔵 */
+/* ------------------------------------- */
+
+@media(max-width:768px){
+    /* ... Règles Media Query existantes ... */
+    
+    /* Retour à l'affichage vertical sur les petits écrans pour les Présidents */
+    .president-card {
+        display: block; /* Force le retour à une carte par ligne */
+        width: 100%;
+        margin: 20px 0;
+    }
+}
+/* ------------------------------------- */
+/* 🔵 تنسيق الأيقونات (Committee Icon) 🔵 */
+/* ------------------------------------- */
+.committee-icon {
+    width: 70px;
+    height: 70px;
+    background: var(--primary-color);
+    color: white;
+    border-radius: 50%;
+    /* ⚠️ نستخدم Flexbox لتوسيط المحتوى داخل الدائرة فقط ⚠️ */
+    display: flex; 
+    align-items: center;
+    justify-content: center;
+    font-size: 1.5em;
+    margin: 0 auto 10px;
+    font-weight: bold;
+}
+
+
+/* ------------------------------------- */
+/* 🔵 تنسيق سلايدر اللجنة (Committee Slider) 🔵 */
+/* ------------------------------------- */
+
+.committee-slider-container {
+    position: relative;
+    overflow: hidden;
+    max-width: 400px; 
+    margin: 0 auto;
+    padding: 0 50px; 
+    box-sizing: content-box;
+    /* 🟢 تم إزالة أي أنماط FlexBox عامة هنا 🟢 */
+}
+
+/* ⚠️ نستخدم Flexbox هنا لتظهر البطاقات جنباً إلى جنب ويتمكن الـ JS من تحريكها ⚠️ */
+.committee-wrapper {
+    display: flex;
+    transition: transform 0.5s ease-in-out;
+}
+
+.committee-card {
+    min-width: 100%;
+    flex-shrink: 0; 
+    box-sizing: border-box;
+    padding: 25px;
+    border-radius: 15px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+    text-align: center;
+    background: white;
+}
+
+/* تنسيق الأزرار (السهام) */
+.slider-btn {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background: var(--primary-color);
+    border: none;
+    color: white;
+    font-size: 1.5em;
+    width: 45px;
+    height: 45px;
+    line-height: 45px;
+    text-align: center;
+    cursor: pointer;
+    border-radius: 50%;
+    z-index: 20;
+    opacity: 0.8;
+    transition: opacity 0.3s, transform 0.3s;
+}
+
+.slider-btn:hover {
+    opacity: 1;
+    transform: translateY(-50%) scale(1.05);
+}
+
+.slider-btn.prev {
+    left: 0;
+}
+
+.slider-btn.next {
+    right: 0;
+}
+
+
+/* Résumé */
+.resume-bg { 
+    background:url('https://th.bing.com/th/id/R.e847fbc3c5255fa33a5cdc98f831d2dc?rik=DTkz6w0F4KPF7g&riu=http%3a%2f%2fwww.univ-eltarf.dz%2ffr%2fimages%2funiv%2fcompus_sidi_belgacem2.jpg&ehk=wR9NMN5yEsXY2PWbR7drUw%2fXMFmVxAk9PbK0Uu3fGS4%3d&risl=&pid=ImgRaw&r=0') center/cover no-repeat; 
+}
+.resume-content { background:rgba(255,255,255,0.85); padding:30px; border-radius:10px; max-width:900px; margin:0 auto; }
+
+
+/* Footer */
+footer { text-align:center; padding:20px; background:var(--dark-text); color:white; }
+
+
+/* ------------------------------------- */
+/* 🔵 3. استجابة الهاتف (Media Queries) 🔵 */
+/* ------------------------------------- */
+
+@media(max-width:768px){
+
+    .section { padding: 40px 0; }
+    .section-title { font-size: 2em; margin-bottom: 30px; }
+
+    /* Hero Section - التأكيد على الترتيب العمودي على الهاتف */
+    .hero-bg { height: auto; min-height: 90vh; padding: 30px 20px; }
+
+    .hero-text h1 { font-size: 1.5em; }
+    .hero-image { max-width: 100%; }
+    
+    /* Navbar */
+    .nav-links { display:none; flex-direction:column; width:100%; position:absolute; top:var(--nav-height); left:0; background:white; }
+    .nav-links.active { display:flex; }
+    .hamburger { display:block; }
+    
+    /* تنسيق سلايدر اللجنة على الهاتف */
+    .committee-slider-container {
+        max-width: 90%; 
+        padding: 0 30px;
+    }
+    
+    .slider-btn {
+        font-size: 1.2em;
+        width: 35px;
+        height: 35px;
+        line-height: 35px;
+    }
+    .slider-btn.prev {
+        left: -5px;
+    }
+    .slider-btn.next {
+        right: -5px;
+    }
+}
